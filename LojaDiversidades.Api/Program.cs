@@ -12,6 +12,16 @@ namespace LojaDiversidades.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "allowall", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();                    
+                });
+            });
+
             builder.Services.AddDbContext<LojaDiversidadesDbContext>(x =>
             x.UseInMemoryDatabase("LojaDiversidadesDb"));
 
@@ -52,6 +62,8 @@ namespace LojaDiversidades.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("allowall");
 
             app.UseAuthorization();
 

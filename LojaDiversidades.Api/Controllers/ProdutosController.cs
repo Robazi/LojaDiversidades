@@ -54,6 +54,23 @@ namespace LojaDiversidades.Api.Controllers
             return Ok();
         }
 
+        [HttpPut("comprar")]
+        public async Task<IActionResult> PutComprar([FromBody] Produto produto)
+        {
+            var produtoCadastrado = await _context.Produtos.FindAsync(produto.Id);
+            if (produtoCadastrado == null)
+            {
+                return NotFound();
+            }
+            
+            produtoCadastrado.Quantidade -= produto.Quantidade;
+            _context.Entry(produtoCadastrado).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         [HttpPost]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
