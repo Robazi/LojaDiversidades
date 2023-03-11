@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {path:'gestao', component: GestaoComponent },
   {path:'gestao/cadastro', component: GestaoCadastroComponent },
+  {path:'gestao/editar/:id', component: GestaoCadastroComponent },
   {path:'login', component: LoginComponent },
   {path:'compras', component: ComprasComponent },
 

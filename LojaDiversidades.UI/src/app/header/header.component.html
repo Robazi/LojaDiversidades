@@ -6,17 +6,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li *ngIf="ehAdministrador()" class="nav-item">
             <a class="nav-link" aria-current="page" routerLink="gestao">Gestão</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="ehCliente()" class="nav-item">
             <a class="nav-link" routerLink="compras">Compras</a>
           </li>           
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-2" type="text" placeholder="Login" aria-label="Login">
-            <input class="form-control me-2" type="password" placeholder="Senha" aria-label="Login">
-            <button class="btn btn-outline-success" type="submit">Login</button>
+        <form *ngIf="!estaLogado()" class="d-flex">
+            <input [(ngModel)]="login" name="login" class="form-control me-2" type="text" placeholder="Login" aria-label="Login">
+            <input [(ngModel)]="senha" name="senha" class="form-control me-2" type="password" placeholder="Senha" aria-label="Senha">
+            <button class="btn btn-outline-success" (click)="sendLogin()">Login</button>
+          </form>
+          <form *ngIf="estaLogado()" class="d-flex">
+            Está logado como {{getFuncao()}}
+            <button class="btn btn-outline-success" (click)="logout()">Logout</button>
           </form>
       </div>
     </div>

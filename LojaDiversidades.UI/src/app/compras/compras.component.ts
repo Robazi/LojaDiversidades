@@ -17,11 +17,13 @@ export class ComprasComponent implements OnInit {
     })
   }
 
+  id = 0;
+  quantidade = 0;
+
   produtos: any = [];
 
   finalizar() {
-    console.log(this.produtos.service.nome)
-    this.service.addProduto(this.produtos.service.nome,this.produtos.service.quantidade).subscribe(result => {
+        this.service.comprarProduto(this.id, this.quantidade).subscribe(result => {
       history.back();
     })
   }

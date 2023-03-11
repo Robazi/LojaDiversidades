@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LojaDiversidades.Api.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LojaDiversidades.Api.Controllers
 {
@@ -21,12 +22,14 @@ namespace LojaDiversidades.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
         {
             return await _context.Produtos.ToListAsync();
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Produto>> GetProduto(int id)
         {
             var produto = await _context.Produtos.FindAsync(id);
@@ -40,6 +43,7 @@ namespace LojaDiversidades.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles ="administrador")]
         public async Task<IActionResult> PutProduto(int id, Produto produto)
         {
             if (!ProdutoExists(id))
@@ -55,6 +59,7 @@ namespace LojaDiversidades.Api.Controllers
         }
 
         [HttpPut("comprar")]
+        [Authorize(Roles = "cliente")]
         public async Task<IActionResult> PutComprar([FromBody] Produto produto)
         {
             var produtoCadastrado = await _context.Produtos.FindAsync(produto.Id);
@@ -72,6 +77,7 @@ namespace LojaDiversidades.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "administrador")]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
             _context.Produtos.Add(produto);
@@ -81,6 +87,7 @@ namespace LojaDiversidades.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "administrador")]
         public async Task<IActionResult> DeleteProduto(int id)
         {
             var produto = await _context.Produtos.FindAsync(id);

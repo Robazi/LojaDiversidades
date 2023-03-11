@@ -9,8 +9,8 @@ namespace LojaDiversidades.Api.Repositorio
         {
             var usuarios = new List<UsuarioModel>
             {
-                new() { Id = 1, Login = "rodbaz", Senha = "rodbaz00", Funcao = "administrador" },
-                new() { Id = 2, Login = "bazsant", Senha = "bazsant2023", Funcao = "cliente" }
+                new() { Id = 1, Login = "admin", Senha = "admin#123", Funcao = "administrador" },
+                new() { Id = 2, Login = "cliente", Senha = "cliente#123", Funcao = "cliente" }
             };
 
             return usuarios

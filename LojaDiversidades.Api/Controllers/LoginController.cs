@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LojaDiversidades.Api.Controllers
 {
     [ApiController]
-    [Route("v1")]
+    [Route("api")]
     public class LoginController : ControllerBase
     {
         [HttpPost]
@@ -18,7 +18,7 @@ namespace LojaDiversidades.Api.Controllers
             var usuario = UsuarioRepositorio.Get(model.Usuario, model.Senha);
             
             if (usuario == null) 
-                return NotFound(new { messege = "Usuário ou senha inválidos" });
+                return NotFound(new { message = "Usuário ou senha inválidos" });
 
             var token = TokenServico.GerarToken(usuario);
 

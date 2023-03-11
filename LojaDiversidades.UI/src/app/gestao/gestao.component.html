@@ -11,7 +11,10 @@
       <tr *ngFor="let produto of produtos">        
         <td>{{produto.nome}}</td>
         <td>{{produto.quantidade}}</td>
-        <td>@mdo</td>
+        <td>
+          <button (click)="editar(produto.id)" class="btn btn-primary">Editar</button>
+          <button (click)="excluir(produto.id)" class="btn btn-danger">Excluir</button>
+        </td>
       </tr>      
     </tbody>
   </table>
