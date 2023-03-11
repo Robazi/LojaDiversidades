@@ -16,11 +16,11 @@
         <form *ngIf="!estaLogado()" class="d-flex">
             <input [(ngModel)]="login" name="login" class="form-control me-2" type="text" placeholder="Login" aria-label="Login">
             <input [(ngModel)]="senha" name="senha" class="form-control me-2" type="password" placeholder="Senha" aria-label="Senha">
-            <button class="btn btn-outline-success" (click)="sendLogin()">Login</button>
+            <button class="btn btn-success" (click)="sendLogin()">Login</button>
           </form>
           <form *ngIf="estaLogado()" class="d-flex">
             Está logado como {{getFuncao()}}
-            <button class="btn btn-outline-success" (click)="logout()">Logout</button>
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
           </form>
       </div>
     </div>
