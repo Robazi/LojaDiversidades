@@ -36,13 +36,15 @@ export class GestaoComponent implements OnInit {
   excluir(id: number) {
 
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Tem certeza que deseja excluir?',
+      text: "Você não será capaz de reverter isso!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Sim, apague!',
+      cancelButtonText: 'Cancelar'
+      
     }).then((result) => {
       if (result.isConfirmed) {
         this.service.excluirProduto(id).subscribe(result => { 
@@ -50,8 +52,8 @@ export class GestaoComponent implements OnInit {
           this.ngOnInit();
           
           Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            'Excluido!',
+            'Seu arquivo foi excluído.',
             'success'
           )
         })
