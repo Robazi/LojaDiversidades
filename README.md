@@ -15,8 +15,8 @@
 ### Backend
 
 - Acesse a pasta `LojaDiversidades.Api` e execute o comando `dotnet run` para iniciar o servidor.
-- O servidor estará disponível em `https://localhost:5085`
-- Para visualizar a documentação da API, acesse `https://localhost:5085/swagger`
+- O servidor estará disponível em `http://localhost:5085`
+- Para visualizar a documentação da API, acesse `http://localhost:5085/swagger`
 
 ### Frontend
 
